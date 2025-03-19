@@ -13,6 +13,12 @@ public class Task {
         isCompleted = true;
     }
 
+    public void unComplete() {
+        isCompleted = false;
+    }
+
+
+
     public boolean isCompleted() {
         return isCompleted;
     }

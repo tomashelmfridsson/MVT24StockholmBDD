@@ -63,8 +63,23 @@ public class TodoList {
             sb.append(i + 1);
             sb.append(". ");
             sb.append(tasks.get(i).getDescription());
-            // sb.append("\n");
+            sb.append("\n");
         }
         return sb.toString();
+    }
+
+    public void unCompleteTask(int taskIndex){
+        if (taskIndex >= 0 && taskIndex < tasks.size()) {
+            if (tasks.get(taskIndex).isCompleted()) {
+                tasks.get(taskIndex).unComplete();
+                finishedTasks--;
+            }
+        }
+    }
+
+    public void reArrangeList(int before, int after) {
+        Task taskToBeMoved= tasks.get(before);
+        tasks.remove(before);
+        tasks.add(after,taskToBeMoved);
     }
 }
