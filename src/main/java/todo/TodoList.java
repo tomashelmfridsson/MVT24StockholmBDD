@@ -21,8 +21,8 @@ public class TodoList {
 
     public void completeTask(int taskIndex) {
         if (taskIndex >= 0 && taskIndex < tasks.size()) {
-            tasks.get(taskIndex).complete();
             if (!tasks.get(taskIndex).isCompleted()) {
+                tasks.get(taskIndex).complete();
                 finishedTasks++;
             }
         }
@@ -63,7 +63,7 @@ public class TodoList {
             sb.append(i + 1);
             sb.append(". ");
             sb.append(tasks.get(i).getDescription());
-            sb.append("\n");
+            // sb.append("\n");
         }
         return sb.toString();
     }

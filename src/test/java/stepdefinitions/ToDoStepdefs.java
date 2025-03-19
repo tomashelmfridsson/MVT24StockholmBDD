@@ -1,5 +1,7 @@
 package stepdefinitions;
 
+import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,9 +12,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ToDoStepdefs {
     private TodoList todoList;
 
+    @Before
+    public void setup(){
+        todoList = new TodoList();
+    }
+
     @Given("I have a Todolist")
     public void iHaveATodolist() {
-        todoList = new TodoList();
+
     }
 
     @When("I add a task with description {string}")
@@ -27,6 +34,17 @@ public class ToDoStepdefs {
 
     @Then("The task list is {string}")
     public void theTaskIsMarkedCompleted(String tasklist) {
-        assertEquals(tasklist,todoList.getList().trim());
+        assertEquals(tasklist,todoList.getList());
+    }
+
+
+    @Then("The task list size is {int}")
+    public void theTaskListSizeIs(int size) {
+        assertEquals(size,todoList.getNbrOfTasks());
+    }
+
+    @And("Number of completed tasks is {int}")
+    public void numberOfCompletedTasksIs(int nbrCompletedtasks) {
+    assertEquals(nbrCompletedtasks,todoList.getFinishedTasks());
     }
 }
